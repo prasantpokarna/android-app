@@ -3,13 +3,14 @@ version: 0.2
 phases:
   build:
     commands:
-      - apt install -y nodejs
-      - npm install -g firebase-tools
+      - apt install -y wget
+      - wget https://github.com/firebase/firebase-tools/releases/download/v11.0.1/firebase-tools-linux
+      - chmod +x ./firebase-tools-linux
       - echo Entering Build Phase
       - chmod +x gradlew
       - ./gradlew build
       - echo "Uploading to Firebase"
-      - firebase appdistribution:distribute ./app/build/outputs/apk/debug/app-debug.apk --app 1:646084226746:android:f0ff1378ad85080f79dc83  --groups “Test-group” --token "1//0gDujCUXGHnSOCgYIARAAGBASNwF-L9IrO_Ys4QhOHf5jpMXHTJ0DEg_3GyL6nfQ_eqDE7hOzrwoc8UWybMp474O1IhiCNUy-6Nk" --release-notes “test-was”
+      - ./firebase-tools-linux appdistribution:distribute ./app/build/outputs/apk/debug/app-debug.apk --app 1:646084226746:android:f0ff1378ad85080f79dc83  --groups “Test-group” --token "1//0gDujCUXGHnSOCgYIARAAGBASNwF-L9IrO_Ys4QhOHf5jpMXHTJ0DEg_3GyL6nfQ_eqDE7hOzrwoc8UWybMp474O1IhiCNUy-6Nk" --release-notes “test-was”
 
 artifacts:
   files:
