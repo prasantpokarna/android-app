@@ -4,7 +4,7 @@ phases:
   build:
     commands:
       - echo Entering Build Phase
-      - docker --version
+      #- docker --version
       - ls -a
       - #docker pull androidsdk/android-29
       - #docker run -it androidsdk/android-29 /bin/sh
