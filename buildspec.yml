@@ -4,13 +4,12 @@ phases:
   build:
     commands:
       - echo Entering Build Phase
-      #- docker --version
-      - ls -a
-      - #docker pull androidsdk/android-29
-      - #docker run -it androidsdk/android-29 /bin/sh
       - chmod +x gradlew
       - ./gradlew build
+      - curl -sL https://firebase.tools | bash
+      - echo "Uploading to Firebase"
+      - firebase appdistribution:distribute ./app/build/outputs/apk/debug/app-debug.apk --app 1:646084226746:android:f0ff1378ad85080f79dc83  --groups “Test-group” --token "1//0gDujCUXGHnSOCgYIARAAGBASNwF-L9IrO_Ys4QhOHf5jpMXHTJ0DEg_3GyL6nfQ_eqDE7hOzrwoc8UWybMp474O1IhiCNUy-6Nk" --release-notes “test-was”
 
 artifacts:
   files:
-    - app/build/outputs/apk/app-debug.apk
+    - ./app/build/outputs/apk/app-debug.apk
