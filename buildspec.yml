@@ -10,7 +10,7 @@ phases:
       - chmod +x gradlew
       - ./gradlew build
       - echo "Uploading to Firebase"
-      - ./firebase-tools-linux appdistribution:distribute ./app/build/outputs/apk/debug/app-debug.apk --app 1:646084226746:android:f0ff1378ad85080f79dc83  --groups “Test-group” --token "1//0gDujCUXGHnSOCgYIARAAGBASNwF-L9IrO_Ys4QhOHf5jpMXHTJ0DEg_3GyL6nfQ_eqDE7hOzrwoc8UWybMp474O1IhiCNUy-6Nk" --release-notes “test-was”
+      - ./firebase-tools-linux appdistribution:distribute ./app/build/outputs/apk/debug/app-debug.apk --app 1:646084226746:android:f0ff1378ad85080f79dc83  --groups new-group --token "1//0gCqbJvNlEEIxCgYIARAAGBASNwF-L9IrZYj91NtWvBB-5f6cAxisrgYwJdHoAK3UQ0pmLs0rW_3BgSPpsGR73lS1yoE6dBF7nTM" --release-notes “test-aws”
 
 artifacts:
   files:
