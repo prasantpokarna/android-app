@@ -1,0 +1,11 @@
+version: 0.2
+
+phases:
+  build:
+    commands:
+      - echo Entering Build Phase
+      - ./gradlew build
+
+artifacts:
+  files:
+    - app/build/outputs/apk/app-debug.apk
