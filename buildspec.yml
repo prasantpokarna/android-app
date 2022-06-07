@@ -8,8 +8,8 @@ phases:
       - ls -a
       - #docker pull androidsdk/android-29
       - #docker run -it androidsdk/android-29 /bin/sh
-      - #chmod +x gradlew
-      - #./gradlew build
+      - chmod +x gradlew
+      - ./gradlew build
 
 artifacts:
   files:
