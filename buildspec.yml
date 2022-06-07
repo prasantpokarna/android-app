@@ -3,7 +3,7 @@ version: 0.2
 phases:
   build:
     commands:
-      - apt install nodejs
+      - apt install -y nodejs
       - npm install -g firebase-tools
       - echo Entering Build Phase
       - chmod +x gradlew
