@@ -3,14 +3,11 @@ version: 0.2
 phases:
   build:
     commands:
+      - yum install -y wget
+      - wget https://github.com/firebase/firebase-tools/releases/download/v11.0.1/firebase-tools-linux
+      - chmod +x ./firebase-tools-linux
       - echo Entering Build Phase
-      #- docker --version
-      - ls -a
-      - #docker pull androidsdk/android-29
-      - #docker run -it androidsdk/android-29 /bin/sh
       - chmod +x gradlew
       - ./gradlew build
-
-artifacts:
-  files:
-    - app/build/outputs/apk/app-debug.apk
+      - echo "Uploading to Firebase"
+      - ./firebase-tools-linux appdistribution:distribute ./app/build/outputs/apk/debug/app-debug.apk --app 1:646084226746:android:f0ff1378ad85080f79dc83  --groups new-group --token "1//0gCqbJvNlEEIxCgYIARAAGBASNwF-L9IrZYj91NtWvBB-5f6cAxisrgYwJdHoAK3UQ0pmLs0rW_3BgSPpsGR73lS1yoE6dBF7nTM" --release-notes “test-aws”
