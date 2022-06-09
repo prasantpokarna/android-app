@@ -1,10 +1,10 @@
 version: 0.2
 
 env:
-  secrets-manager:
-    FirebaseToken: "FIREBASE_ACCESS:FIREBASE_ACCESS_TOKEN"
-    AppID: "FIREBASE_ACCESS:APP_ID"
-    Tester_Group: "FIREBASE_ACCESS:TESTER_GROUP"
+  parameter-store:
+    FirebaseToken: "/ssfe/FIREBASE_ACCESS_TOKEN"
+    AppID: "/ssfe/android/APPID"
+    Tester_Group: "/ssfe/android/TESTER_GROUP"
 
 phases:
   build:
