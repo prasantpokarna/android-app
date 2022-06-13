@@ -17,8 +17,8 @@ phases:
       - chmod +x gradlew
       - ./gradlew build
       - echo "Uploading to Firebase"
-      - ./firebase-tools-linux appdistribution:distribute ./app/build/outputs/apk/release/app-release.apk --app ${AppID} --groups ${Tester_Group} --token "${FirebaseToken}" --release-notes-file ReleaseNotes.txt
       - echo "Signing the apk"
-      - apksigner sign --ks rootca.jks --ks-pass pass:${KeystorePassword} app-release-unsigned.apk
+      - apksigner sign --ks rootca.jks --ks-pass pass:${KeystorePassword} ./app/build/outputs/apk/release/app-release-unsigned.apk
       - echo "Verifying the signed apk"
-      - apksigner verify --print-certs app-release-unsigned.apk
+      - apksigner verify --print-certs ./app/build/outputs/apk/release/app-release-unsigned.apk
+      - ./firebase-tools-linux appdistribution:distribute ./app/build/outputs/apk/release/app-release-unsigned.apk --app ${AppID} --groups ${Tester_Group} --token "${FirebaseToken}" --release-notes-file ReleaseNotes.txt
