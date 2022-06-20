@@ -2,23 +2,17 @@ version: 0.2
 
 env:
   parameter-store:
-    FirebaseToken: "/ssfe/FIREBASE_ACCESS_TOKEN"
-    AppID: "/ssfe/android/APPID"
-    Tester_Group: "/ssfe/android/TESTER_GROUP"
-    KeystorePassword: "/ssfe/android/KeystorePassword"
+    KeystorePassword: "/ssfe/android/production/KeystorePassword"
 
 phases:
   build:
     commands:
-      - apt install -y wget
-      - wget https://github.com/firebase/firebase-tools/releases/download/v11.0.1/firebase-tools-linux
-      - chmod +x ./firebase-tools-linux
       - echo Entering Build Phase
       - chmod +x gradlew
       - ./gradlew build
       - echo "Uploading to Firebase"
       - echo "Signing the apk"
-      - apksigner sign --ks rootca.jks --ks-pass pass:${KeystorePassword} ./app/build/outputs/apk/release/app-release-unsigned.apk
+      - apksigner sign --ks ./app/ShearShare.jks --ks-pass pass:${KeystorePassword} ./app/build/outputs/apk/release/app-release-unsigned.apk
       - echo "Verifying the signed apk"
       - apksigner verify --print-certs ./app/build/outputs/apk/release/app-release-unsigned.apk
-      - ./firebase-tools-linux appdistribution:distribute ./app/build/outputs/apk/release/app-release-unsigned.apk --app ${AppID} --groups ${Tester_Group} --token "${FirebaseToken}" --release-notes-file ReleaseNotes.txt
+      - java -jar release-manager-1.3.jar -key semiotic-effort-265920-e52c804c6a24.json -file ./app/build/outputs/apk/release/app-release-unsigned.apk -track internal -name "My First Project" -notes "First release"
