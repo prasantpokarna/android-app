@@ -8,7 +8,9 @@ phases:
   build:
     commands:
       - echo Entering Build Phase
-      - printenv
+      #- printenv
+      - echo $CODEBUILD_WEBHOOK_HEAD_REF
+      - echo $CODEBUILD_WEBHOOK_BASE_REF
       #- chmod +x gradlew
       #- ./gradlew build
       #- echo "Uploading to Firebase"
