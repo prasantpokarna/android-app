@@ -1,14 +1,15 @@
 version: 0.2
 
-#env:
- # parameter-store:
-  #  KeystorePassword: "/ssfe/android/production/KeystorePassword"
+env:
+  parameter-store:
+    KeystorePassword: "/ssfe/android/$/KeystorePassword"
 
 phases:
   build:
     commands:
       - echo Entering Build Phase
       - echo $SERVER_ENV
+      - echo $BranchName
       - | 
          if [ $SERVER_ENV == "prod" ]
          then
