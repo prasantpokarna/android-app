@@ -8,5 +8,7 @@ phases:
   build:
     commands:
       - echo Entering Build Phase
-      - echo $SERVICE_CREDENTIALS > key.json
-      - cat key.json
+      #- echo $SERVICE_CREDENTIALS > key.json
+      #- cat key.json
+      - echo "echo Hello" > test.sh
+      - ./test.sh
