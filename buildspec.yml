@@ -13,7 +13,8 @@ phases:
       - echo $CODEBUILD_WEBHOOK_BASE_REF
       - echo "Building ${CODEBUILD_WEBHOOK_TRIGGER}"
       #- echo "${SourceVariables.BranchName}"
-      - echo "#{SourceVariables.BranchName}"
+      #- echo "#{SourceVariables.BranchName}"
+      - echo "${BranchName}"
       #- chmod +x gradlew
       #- ./gradlew build
       #- echo "Uploading to Firebase"
