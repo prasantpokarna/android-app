@@ -1,8 +1,8 @@
 version: 0.2
 
-env:
-  parameter-store:
-    KeystorePassword: "/ssfe/android/$/KeystorePassword"
+#env:
+  #parameter-store:
+    #KeystorePassword: "/ssfe/android/KeystorePassword"
 
 phases:
   build:
