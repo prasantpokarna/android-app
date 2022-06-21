@@ -8,13 +8,13 @@ phases:
   build:
     commands:
       - echo Entering Build Phase
-      #- printenv
-      - echo $CODEBUILD_WEBHOOK_HEAD_REF
-      - echo $CODEBUILD_WEBHOOK_BASE_REF
-      - echo "Building ${CODEBUILD_WEBHOOK_TRIGGER}"
-      #- echo "${SourceVariables.BranchName}"
-      #- echo "#{SourceVariables.BranchName}"
-      - echo "${BranchName}"
+      - | 
+         if [ $SERVER_ENV == "prod" ]
+         then
+            echo "Starting Prod build"
+         else
+            echo "Starting Test build"
+         fi
       #- chmod +x gradlew
       #- ./gradlew build
       #- echo "Uploading to Firebase"
