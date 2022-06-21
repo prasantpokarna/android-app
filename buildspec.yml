@@ -11,6 +11,7 @@ phases:
       #- printenv
       - echo $CODEBUILD_WEBHOOK_HEAD_REF
       - echo $CODEBUILD_WEBHOOK_BASE_REF
+      - echo "Building ${CODEBUILD_WEBHOOK_TRIGGER}"
       #- chmod +x gradlew
       #- ./gradlew build
       #- echo "Uploading to Firebase"
