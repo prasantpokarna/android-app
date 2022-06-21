@@ -1,18 +1,19 @@
 version: 0.2
 
-env:
-  parameter-store:
-    KeystorePassword: "/ssfe/android/production/KeystorePassword"
+#env:
+ # parameter-store:
+  #  KeystorePassword: "/ssfe/android/production/KeystorePassword"
 
 phases:
   build:
     commands:
       - echo Entering Build Phase
-      - chmod +x gradlew
-      - ./gradlew build
-      - echo "Uploading to Firebase"
-      - echo "Signing the apk"
-      - apksigner sign --ks ./app/ShearShare.jks --ks-pass pass:${KeystorePassword} ./app/build/outputs/apk/release/app-release-unsigned.apk
-      - echo "Verifying the signed apk"
-      - apksigner verify --print-certs ./app/build/outputs/apk/release/app-release-unsigned.apk
-      - java -jar release-manager-1.3.jar -key semiotic-effort-265920-e52c804c6a24.json -file ./app/build/outputs/apk/release/app-release-unsigned.apk -track internal -name "My First Project" -notes "First release"
+      - printenv
+      #- chmod +x gradlew
+      #- ./gradlew build
+      #- echo "Uploading to Firebase"
+      #- echo "Signing the apk"
+      #- apksigner sign --ks ./app/ShearShare.jks --ks-pass pass:${KeystorePassword} ./app/build/outputs/apk/release/app-release-unsigned.apk
+      #- echo "Verifying the signed apk"
+      #- apksigner verify --print-certs ./app/build/outputs/apk/release/app-release-unsigned.apk
+      #- java -jar release-manager-1.3.jar -key semiotic-effort-265920-e52c804c6a24.json -file ./app/build/outputs/apk/release/app-release-unsigned.apk -track internal -name "My First Project" -notes "First release"
