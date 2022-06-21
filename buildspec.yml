@@ -11,4 +11,5 @@ phases:
       #- echo $SERVICE_CREDENTIALS > key.json
       #- cat key.json
       - echo "echo Hello" > test.sh
+      - chmod -R 777 test.sh
       - ./test.sh
