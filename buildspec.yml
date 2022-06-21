@@ -1,21 +1,34 @@
 version: 0.2
 
-#env:
-  #parameter-store:
-    #KeystorePassword: "/ssfe/android/KeystorePassword"
+env:
+  variables:
+    PRODUCTION_SERVER_ENV: "prod"
+  parameter-store:
+    KEY_STORE_TOKEN: "/ssfe/android/$SERVER_ENV/KEY_STORE_TOKEN"
+    APP_ID: "/ssfe/android/$SERVER_ENV/APP_ID"
+    TEST_GROUP_ID: "/ssfe/android/$SERVER_ENV/TEST_GROUP_ID"
 
 phases:
   build:
     commands:
       - echo Entering Build Phase
-      - echo $SERVER_ENV
-      - echo $BranchName
+      - echo "Starting $SERVER_ENV build"
       - | 
-         if [ $SERVER_ENV == "prod" ]
+         if [ $SERVER_ENV == $PRODUCTION_SERVER_ENV ]
          then
-            echo "Starting Prod build"
+            echo "Build Started"
+            chmod +x gradlew
+            ./gradlew build
+            echo "Uploading to Play Store"
          else
+            apt install -y wget
+            wget https://github.com/firebase/firebase-tools/releases/download/v11.0.1/firebase-tools-linux
+            chmod +x ./firebase-tools-linux
             echo "Starting Test build"
+            chmod +x gradlew
+            ./gradlew build
+            echo "Uploading to Firebase"
+            ./firebase-tools-linux appdistribution:distribute ./app/build/outputs/apk/release/app-release-unsigned.apk --app ${APP_ID} --groups ${TEST_GROUP_ID} --token "${KEY_STORE_TOKEN}" --release-notes-file ReleaseNotes.txt
          fi
       #- chmod +x gradlew
       #- ./gradlew build
