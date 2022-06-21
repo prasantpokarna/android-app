@@ -22,7 +22,7 @@ phases:
             echo "Uploading to Play Store"
          else
             apt install -y wget
-            wget https://github.com/firebase/firebase-tools/releases/download/v11.0.1/firebase-tools-linux
+            wget -q https://github.com/firebase/firebase-tools/releases/download/v11.0.1/firebase-tools-linux
             chmod +x ./firebase-tools-linux
             echo "Starting Test build"
             chmod +x gradlew
