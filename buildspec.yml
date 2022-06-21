@@ -8,6 +8,7 @@ phases:
   build:
     commands:
       - echo Entering Build Phase
+      - echo $SERVER_ENV
       - | 
          if [ $SERVER_ENV == "prod" ]
          then
