@@ -38,7 +38,7 @@ phases:
          fi
 artifacts:
   files:
-    - './app/build/outputs/bundle/release/'
+    - './app/*'
   name: builds/$CODEBUILD_BUILD_NUMBER/my-artifacts 
     
       #- java -jar release-manager-1.3.jar -key semiotic-effort-265920-e52c804c6a24.json -file ./app/build/outputs/apk/release/app-release-unsigned.apk -track internal -name "My First Project" -notes "First release"
