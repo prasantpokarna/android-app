@@ -19,13 +19,13 @@ phases:
          then
             echo "Build Started"
             chmod +x gradlew
-            ./gradlew build
+            #./gradlew build
             echo "Signing the apk"
-            apksigner sign --ks ${JKSPATH} --ks-pass pass:${KEY_STORE_TOKEN} ./app/build/outputs/apk/release/app-release-unsigned.apk
+            #apksigner sign --ks ${JKSPATH} --ks-pass pass:${KEY_STORE_TOKEN} ./app/build/outputs/apk/release/app-release-unsigned.apk
             echo "Uploading to Play Store"
             echo "Verifying the signed apk"
-            apksigner verify --print-certs ./app/build/outputs/apk/release/app-release-unsigned.apk
-            aws s3 cp ./app/build/outputs/apk/release/app-release-unsigned.apk s3://codepipeline-us-east-2-887298907548/ssfe-android-test/ --region "us-east-2"
+            #apksigner verify --print-certs ./app/build/outputs/apk/release/app-release-unsigned.apk
+            #aws s3 cp ./app/build/outputs/apk/release/app-release-unsigned.apk s3://codepipeline-us-east-2-887298907548/ssfe-android-test/ --region "us-east-2"
          else
             #apt install -y wget
             #wget -q https://github.com/firebase/firebase-tools/releases/download/v11.0.1/firebase-tools-linux
@@ -39,7 +39,7 @@ phases:
          fi
 artifacts:
   files:
-    - './app/*'
+    - './app/build/outputs/apk/release/app-release-unsigned.apk'
   name: builds/$CODEBUILD_BUILD_NUMBER/my-artifacts 
     
       #- java -jar release-manager-1.3.jar -key semiotic-effort-265920-e52c804c6a24.json -file ./app/build/outputs/apk/release/app-release-unsigned.apk -track internal -name "My First Project" -notes "First release"
