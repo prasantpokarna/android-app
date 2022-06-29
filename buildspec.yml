@@ -19,7 +19,7 @@ phases:
          then
             echo "Build Started"
             chmod +x gradlew
-            ./gradlew build
+            ./gradlew assembleRelease
             echo "Signing the apk"
             apksigner sign --ks ${JKSPATH} --ks-pass pass:${KEY_STORE_TOKEN} ./app/build/outputs/apk/release/app-release-unsigned.apk
             echo "Uploading to Play Store"
