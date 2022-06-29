@@ -25,6 +25,7 @@ phases:
             echo "Uploading to Play Store"
             echo "Verifying the signed apk"
             apksigner verify --print-certs ./app/build/outputs/apk/release/app-release-unsigned.apk
+            ls -R ./app
          else
             #apt install -y wget
             #wget -q https://github.com/firebase/firebase-tools/releases/download/v11.0.1/firebase-tools-linux
