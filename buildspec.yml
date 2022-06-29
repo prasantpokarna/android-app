@@ -2,8 +2,8 @@ version: 0.2
 
 env:
   variables:
-    PRODUCTION_SERVER_ENV: "test"
-    JKSPATH: "./app/ShearShare.jks"
+    PRODUCTION_SERVER_ENV: "prod"
+    JKSPATH: "./rootca.jks"
   parameter-store:
     KEY_STORE_TOKEN: "/ssfe/android/$SERVER_ENV/KEY_STORE_TOKEN"
     APP_ID: "/ssfe/android/$SERVER_ENV/APP_ID"
@@ -21,7 +21,7 @@ phases:
             chmod +x gradlew
             ./gradlew build
             echo "Signing the apk"
-            apksigner sign --ks ./app/ShearShare.jks --ks-pass pass:${KEY_STORE_TOKEN} ./app/build/outputs/apk/release/app-release-unsigned.apk
+            apksigner sign --ks ${JKSPATH} --ks-pass pass:${KEY_STORE_TOKEN} ./app/build/outputs/apk/release/app-release-unsigned.apk
             echo "Uploading to Play Store"
             echo "Verifying the signed apk"
             apksigner verify --print-certs ./app/build/outputs/apk/release/app-release-unsigned.apk
