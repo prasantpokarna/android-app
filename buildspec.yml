@@ -39,7 +39,7 @@ phases:
          fi
 artifacts:
   files:
-    - './app/*'
-  name: builds/$CODEBUILD_BUILD_NUMBER/my-artifacts
+    - './app/**/*'
+  name: builds/$CODEBUILD_BUILD_NUMBER/my-artifacts 
     
       
