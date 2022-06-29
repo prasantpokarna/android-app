@@ -39,7 +39,6 @@ phases:
 artifacts:
   files:
     - './app/build/outputs/*'
-  name: builds/$CODEBUILD_BUILD_NUMBER/my-artifacts 
-  discard-paths: yes
+  name: builds/$CODEBUILD_BUILD_NUMBER/my-artifacts
     
       
