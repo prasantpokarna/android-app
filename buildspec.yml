@@ -2,7 +2,7 @@ version: 0.2
 
 env:
   variables:
-    PRODUCTION_SERVER_ENV: "prod"
+    PRODUCTION_SERVER_ENV: "test"
     JKSPATH: "./app/ShearShare.jks"
   parameter-store:
     KEY_STORE_TOKEN: "/ssfe/android/$SERVER_ENV/KEY_STORE_TOKEN"
