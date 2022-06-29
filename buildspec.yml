@@ -15,7 +15,7 @@ phases:
       - echo Entering Build Phase
       - echo "Starting $SERVER_ENV build"
       - | 
-         if [ $SERVER_ENV == $PRODUCTION_SERVER_ENV ]
+         if [ "$SERVER_ENV" = "$PRODUCTION_SERVER_ENV" ]
          then
             echo "Build Started"
             chmod +x gradlew
